@@ -5,6 +5,7 @@ const DoneItem = (props) => {
             <p>{props.desc}</p>
             <p>{props.date}</p>
             <p>{props.priority}</p>
+            
         </div>
     )
 }

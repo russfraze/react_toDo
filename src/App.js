@@ -69,15 +69,14 @@ function App() {
     }
 
     console.log(checkedItems)
+    // console.log(items)
 
   return (
     <div className="App">
       <header className="App-header">
 
-
-
         <NewItem onAddItem={onAddItemHandler} />
-        <Items onDone={onDoneHandler} items={items} />
+        <Items onDone={onDoneHandler} onDelete={setItems} items={items} />
         <DoneItems dones={checkedItems}/>
         <ItemFilter />
 
