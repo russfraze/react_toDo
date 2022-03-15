@@ -1,0 +1,10 @@
+.Item {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rosybrown
+  
+}
+
+.Item h3 {
+  
+}

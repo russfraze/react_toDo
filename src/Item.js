@@ -1,9 +1,10 @@
-
+import styles from './Item.module.css';
 
 const Item = (props) => {
 
     const clickHandler = (e) => {
         props.onClick(e.target.id)
+        
     }
 
     const delHandler = (e) => {
@@ -11,10 +12,8 @@ const Item = (props) => {
     }
     
     return(
-        <div className="container-fluid">
+        <div className={styles.Item}>
         <h3>{props.desc}</h3>
-        <h3>priority:{props.priority}</h3>
-        <h3>{props.date}</h3>
         <button id={props.id} onClick={clickHandler} type="button" className="btn btn-primary btn-sm">completed</button>
         <button id={props.id} onClick={delHandler}type="button" className="btn btn-secondary btn-sm">delete</button>
         </div>

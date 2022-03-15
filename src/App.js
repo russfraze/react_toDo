@@ -2,39 +2,38 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Items from './Items';
 import NewItem from './NewItem';
-import ItemFilter from './ItemFilter'
-import DoneItems from './DoneItems'
+import DoneItems from './DoneItems';
+import Loader from './Loader';
+import axios from 'axios';
+import * as ReactBootStrap from 'react-bootstrap';
 
-const DUMMY_ITEMS = [
-
-  {
-    id: 'e1',
-    desc: 'Clean the garage',
-    priority: 1,
-    date: 'Jan 15 2022',
-  },
-
-  {
-    id: 'e2',
-    desc: 'Shop for groceries',
-    priority: 2,
-    date: 'Jan 20 2022',
-  },
-
-  {
-    id: 'e3',
-    desc: 'Trap the squirrels',
-    priority: 2,
-    date: 'Jan 23 2022',
-  }
-
-];
 
 
 function App() {
 
-  const [items, setItems] = useState(DUMMY_ITEMS)
-  const [checkedItems, setCheckedItems] = useState([])
+  const [items, setItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // const getTodos = async () => {
+  //   try {
+  //     const data = await axios
+  //       .get(`https://jsonplaceholder.typicode.com/todos?userId=1`)
+  //       .then(res => {
+  //         console.log(res.data.slice(0, 3))
+  //         setItems(res.data.slice(0, 3))
+  //       });
+  //       setLoading(true);
+  //   } catch (e) {
+  //     console.log(e)
+  //     // console.log(items)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getTodos()
+  // }, [])
+
 
   //add an item to the list  
   const onAddItemHandler = (itemData) => {
@@ -45,40 +44,45 @@ function App() {
 
   //move item to completed list
   const onDoneHandler = (id) => {
-    console.log(id)
 
+    const index = items.findIndex(item => {
+      return item.id === parseInt(id)
+    })
 
-    const filterDone = items.filter(
-      function (targ) {
-        return targ.id === id
-      });
+    items[index].completed = true
 
-      setCheckedItems((prevItems) => {
-        return [filterDone[0], ...prevItems]
-      });
+    // setItems(items)
+    console.log('items', items)
 
-      
-      const filterList = items.filter(
-        function (targ) {
-          return targ.id !== id
-        }
-      )
+    const filterList = items.filter((item) => {
+      return item.completed === false
+    })
+    const filterDone = items.filter((item) => {
+      return item.completed !== false
+    })
 
-      setItems(filterList)
-      
-    }
+    console.log(filterDone)
 
-    console.log(checkedItems)
-    // console.log(items)
+    setItems(filterList)
+
+    setCheckedItems( (prevState) => {
+      return[...prevState, filterDone[0] ]
+    })
+
+    console.log('checked', checkedItems)
+  }
+
 
   return (
     <div className="App">
       <header className="App-header">
 
-        <NewItem onAddItem={onAddItemHandler} />
+        {/* {loading ? (NewItem,Items,DoneItems) : (<Loader />) } */}
+
+
+        <NewItem onAddItem={onAddItemHandler} items={items} />
         <Items onDone={onDoneHandler} onDelete={setItems} items={items} />
-        <DoneItems dones={checkedItems}/>
-        <ItemFilter />
+        <DoneItems dones={checkedItems} />
 
 
       </header>

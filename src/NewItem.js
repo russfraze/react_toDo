@@ -5,11 +5,12 @@ const NewItem = (props) => {
     const saveItemDataHandler = (prevItemData) => {
         const itemData = {
             ...prevItemData,
-            id: Math.random().toString()
+            id: props.items.length + 1
         };
         props.onAddItem(itemData);
-    }
 
+    }
+    
     return (
         <ItemForm  onSaveItemData = { saveItemDataHandler } />
     );
