@@ -20,13 +20,14 @@ const ItemForm = (props) => {
         props.onSaveItemData(itemData);
 
         //here I can call the setFunctions again to two way bind the forms
+        setDescription('')
     }; 
 
     return (
         <form onSubmit={formSubmitHandler}>
             <div className="form-group">
                 <label>To Do</label>
-                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={textChangeHandler}></textarea>
+                <textarea value={description}className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={textChangeHandler}></textarea>
             </div>
 
             <button type="submit" className="btn btn-light">create</button>
