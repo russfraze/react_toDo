@@ -28,7 +28,7 @@ const Items = (props) => {
                     onDel={deleteHandler}
                     key={item.id}
                     id={item.id}
-                    desc={item.title}
+                    desc={item.description}
                      />)}
 
         </div>

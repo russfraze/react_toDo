@@ -15,24 +15,24 @@ function App() {
   const [checkedItems, setCheckedItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // const getTodos = async () => {
-  //   try {
-  //     const data = await axios
-  //       .get(`https://jsonplaceholder.typicode.com/todos?userId=1`)
-  //       .then(res => {
-  //         console.log(res.data.slice(0, 3))
-  //         setItems(res.data.slice(0, 3))
-  //       });
-  //       setLoading(true);
-  //   } catch (e) {
-  //     console.log(e)
-  //     // console.log(items)
-  //   }
-  // }
+  const getTodos = async () => {
+    try {
+      const data = await axios
+        .get("/api/todos/")
+        .then(res => {
+          console.log(res.data)
+          setItems(res.data)
+        });
+        setLoading(true);
+    } catch (e) {
+      console.log(e)
+      // console.log(items)
+    }
+  }
 
-  // useEffect(() => {
-  //   getTodos()
-  // }, [])
+  useEffect(() => {
+    getTodos()
+  }, [])
 
 
   //add an item to the list  
