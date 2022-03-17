@@ -16,6 +16,7 @@ const Items = (props) => {
         .then((res) => props.update());
     }   
 
+    
 
     return (
         <div>

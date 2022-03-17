@@ -36,13 +36,15 @@ function App() {
 
   //add an item to the list  
   const onAddItemHandler = (itemData) => {
-    setItems(prevItems => {
-      return [itemData, ...prevItems]
-    });
+    console.log(itemData)
+    axios
+    .post("http://localhost:8000/api/todos/", itemData)
+    .then((res) => getTodos());
   };
 
   //move item to completed list
   const onDoneHandler = (id) => {
+    console.log(id)
 
     const index = items.findIndex(item => {
       return item.id === parseInt(id)
@@ -50,27 +52,21 @@ function App() {
 
     items[index].completed = true
 
-    // setItems(items)
-    console.log('items', items)
+    const set = items[index]
 
-    const filterList = items.filter((item) => {
-      return item.completed === false
-    })
-    const filterDone = items.filter((item) => {
-      return item.completed !== false
-    })
+    // why can't I use the relative path here? 
+    axios
+        .put(`http://localhost:8000/api/todos/${id}/`, set)
+        .then((res) => getTodos());
 
-    console.log(filterDone)
-
-    setItems(filterList)
-
-    setCheckedItems( (prevState) => {
-      return[...prevState, filterDone[0] ]
-    })
-
-    console.log('checked', checkedItems)
-  }
-
+      }
+      
+      const filterList = items.filter((item) => {
+        return item.completed === false
+      })
+      const filterDone = items.filter((item) => {
+        return item.completed !== false
+      })
 
   return (
     <div className="App">
@@ -80,8 +76,8 @@ function App() {
 
 
         <NewItem onAddItem={onAddItemHandler} items={items} />
-        <Items onDone={onDoneHandler} onDelete={setItems} update={getTodos} items={items} />
-        <DoneItems dones={checkedItems} />
+        <Items onDone={onDoneHandler} onDelete={setItems} update={getTodos} items={filterList} />
+        <DoneItems update={getTodos} dones={filterDone} />
 
 
       </header>

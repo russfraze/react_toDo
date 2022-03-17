@@ -13,13 +13,12 @@ const ItemForm = (props) => {
     const formSubmitHandler = (e) => {
         e.preventDefault()
         const itemData = {
-            title: description,
+            description: description,
             completed: false, 
         }
-        //is here where I call onSaveItemData to pass the data from here to NewItem? (and then app)
         props.onSaveItemData(itemData);
 
-        //here I can call the setFunctions again to two way bind the forms
+        //two way bind the form
         setDescription('')
     }; 
 
