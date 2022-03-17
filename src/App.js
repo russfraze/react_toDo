@@ -26,7 +26,6 @@ function App() {
         setLoading(true);
     } catch (e) {
       console.log(e)
-      // console.log(items)
     }
   }
 
@@ -77,11 +76,11 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        {/* {loading ? (NewItem,Items,DoneItems) : (<Loader />) } */}
+        {loading ? (NewItem,Items,DoneItems) : (<Loader />) }
 
 
         <NewItem onAddItem={onAddItemHandler} items={items} />
-        <Items onDone={onDoneHandler} onDelete={setItems} items={items} />
+        <Items onDone={onDoneHandler} onDelete={setItems} update={getTodos} items={items} />
         <DoneItems dones={checkedItems} />
 
 

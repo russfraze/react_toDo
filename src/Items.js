@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Item from './Item';
 
 const Items = (props) => {
@@ -10,15 +11,11 @@ const Items = (props) => {
     const deleteHandler = (id) => {
         console.log(id)
 
-        const filterDeleted = props.items.filter(
-            function (targ) {
-                return targ.id !== parseInt(id)
-              }
-        )
-    
-        props.onDelete(filterDeleted)
-        console.log(filterDeleted)
+        axios
+        .delete(`http://localhost:8000/api/todos/${id}/`)
+        .then((res) => props.update());
     }   
+
 
     return (
         <div>
