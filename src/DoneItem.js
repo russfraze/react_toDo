@@ -10,7 +10,7 @@ const DoneItem = (props) => {
     
     return(
         <div className={styles.doneItem}>
-            <p className={styles.p}>{props.desc}</p>
+            <p className={styles.lineThrough}>{props.desc}</p>
             <XCircleFill className={styles.doneButton} color="#1b8ef29c" size={30} id={props.id} onClick={delHandler}/>
         </div>
     )

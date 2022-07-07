@@ -1,5 +1,6 @@
 import DoneItem from './DoneItem';
 import axios from 'axios';
+import styles from './DoneItem.module.css'
 
 const DoneItems = (props) => {
 
@@ -12,7 +13,7 @@ const DoneItems = (props) => {
     return (
         <div>
             {props.dones.length === 0 ? 
-            <p>There are no completed items</p> : 
+            <p className={styles.noLine}>There are no completed items</p> : 
             props.dones.map(done => 
             <DoneItem 
             onDel={deleteHandler}
