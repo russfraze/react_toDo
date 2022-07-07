@@ -11,7 +11,15 @@ const DoneItems = (props) => {
 
     return (
         <div>
-            {props.dones.length === 0 ? <p>There are no completed items</p> : props.dones.map(done => <DoneItem onDel={deleteHandler}desc={done.description} id={done.id}key={done.id} />)}
+            {props.dones.length === 0 ? 
+            <p>There are no completed items</p> : 
+            props.dones.map(done => 
+            <DoneItem 
+            onDel={deleteHandler}
+            desc={done.description} 
+            id={done.id}
+            key={done.id} 
+            />)}
         </div>
     )
 }

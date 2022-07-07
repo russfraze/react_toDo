@@ -11,7 +11,9 @@ const NewItem = (props) => {
     }
     
     return (
-        <ItemForm  onSaveItemData = { saveItemDataHandler } />
+        <ItemForm  
+        onSaveItemData = { saveItemDataHandler } 
+        />
     );
 };
 

@@ -1,0 +1,21 @@
+label {
+    font-family: roboto;
+    font-weight: 800;
+    color: #5CB9F2;
+    font-size: 30px;
+}
+
+.formButton {
+    background-color: #5CB9F2;
+    margin-top: 7px;
+}
+
+
+.btnDiv {
+    margin-top: 5px;
+}
+
+.formDiv {
+    margin-bottom: 20px;
+}
+

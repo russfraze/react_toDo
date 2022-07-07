@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import Items from './Items';
 import NewItem from './NewItem';
 import DoneItems from './DoneItems';
 import Loader from './Loader';
 import axios from 'axios';
 import * as ReactBootStrap from 'react-bootstrap';
+import styles from './App.module.css'
 
 
 
@@ -23,7 +23,7 @@ function App() {
           console.log(res.data)
           setItems(res.data)
         });
-        setLoading(true);
+      setLoading(true);
     } catch (e) {
       console.log(e)
     }
@@ -38,8 +38,8 @@ function App() {
   const onAddItemHandler = (itemData) => {
     console.log(itemData)
     axios
-    .post("http://localhost:8000/api/todos/", itemData)
-    .then((res) => getTodos());
+      .post("http://localhost:8000/api/todos/", itemData)
+      .then((res) => getTodos());
   };
 
   //move item to completed list
@@ -56,23 +56,24 @@ function App() {
 
     // why can't I use the relative path here? 
     axios
-        .put(`http://localhost:8000/api/todos/${id}/`, set)
-        .then((res) => getTodos());
+      .put(`http://localhost:8000/api/todos/${id}/`, set)
+      .then((res) => getTodos());
 
-      }
-      
-      const filterList = items.filter((item) => {
-        return item.completed === false
-      })
-      const filterDone = items.filter((item) => {
-        return item.completed !== false
-      })
+  }
+
+  const filterList = items.filter((item) => {
+    return item.completed === false
+  })
+  const filterDone = items.filter((item) => {
+    return item.completed !== false
+  })
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <main>
+      <div className={styles.App}>
 
-        {loading ? (NewItem,Items,DoneItems) : (<Loader />) }
+
+        {loading ? (NewItem, Items, DoneItems) : (<Loader />)}
 
 
         <NewItem onAddItem={onAddItemHandler} items={items} />
@@ -80,8 +81,9 @@ function App() {
         <DoneItems update={getTodos} dones={filterDone} />
 
 
-      </header>
-    </div>
+
+      </div>
+    </main>
   );
 }
 

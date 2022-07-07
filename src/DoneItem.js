@@ -1,3 +1,5 @@
+import styles from './DoneItem.module.css'
+import { XCircleFill } from 'react-bootstrap-icons';
 
 const DoneItem = (props) => {
 
@@ -7,10 +9,9 @@ const DoneItem = (props) => {
     }
     
     return(
-        <div>
-            <p>{props.desc}</p>
-            <button id={props.id} onClick={delHandler}type="button" className="btn btn-secondary btn-sm">delete</button>
-            
+        <div className={styles.doneItem}>
+            <p className={styles.p}>{props.desc}</p>
+            <XCircleFill className={styles.doneButton} color="#1b8ef29c" size={30} id={props.id} onClick={delHandler}/>
         </div>
     )
 }

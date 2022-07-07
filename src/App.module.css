@@ -1,0 +1,12 @@
+main {
+    background-color: #06080D;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    max-width: 900px;
+}

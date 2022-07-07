@@ -1,0 +1,24 @@
+
+p {
+    text-decoration: line-through;
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+    margin-right: 7px;
+    margin-left: 7px;
+    color: #1b8ef29c;
+    padding-top: 15px;
+}
+
+.doneItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 7px;
+}
+
+.doneButton {
+    min-width: 30px;
+    margin-right: 7px;
+}

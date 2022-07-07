@@ -1,10 +1,24 @@
 .Item {
   display: flex;
-  justify-content: space-evenly;
-  background-color: rosybrown
-  
+  justify-content: space-between;
+  background-color: #22A2F2;
+  align-items: center;
+  margin: 5px;
+  border-radius: 12px;
 }
 
 .Item h3 {
-  
+  font-family: roboto;
+  font-weight: 300;
+  font-size: 20px;
+  text-align: left;
+  margin-right: 7px;
+  margin-left: 7px;
+  padding-top: 5px;
+  color: #06080D;
 }
+
+/* label {
+  color: #5CB9F2;
+  font-size: 30px;
+} */
