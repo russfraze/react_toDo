@@ -3,7 +3,7 @@
 # To-do list app 
 A simple To-do list app that lets users create items with a short description, complete items by moving to the completed list, and delete items.  
 
-###Created with:
+### Created with:  
 HTML, CSS, JavaScript, Django REST Framework
 
 The back-end of this project is [here](https://github.com/russfraze/backend_toDo)
